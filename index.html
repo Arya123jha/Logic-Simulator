@@ -10,136 +10,109 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --bg:       #0a0e1a;
-    --panel:    #111827;
-    --border:   #1e3a5f;
-    --accent:   #00d4ff;
-    --accent2:  #ff6b35;
-    --green:    #00ff88;
-    --text:     #c8d8f0;
-    --dim:      #4a6080;
-    --glow:     0 0 12px rgba(0,212,255,0.5);
+    --bg:     #0a0e1a;
+    --panel:  #111827;
+    --border: #1e3a5f;
+    --accent: #00d4ff;
+    --accent2:#ff6b35;
+    --green:  #00ff88;
+    --text:   #c8d8f0;
+    --dim:    #4a6080;
+    --glow:   0 0 12px rgba(0,212,255,0.5);
   }
 
   html, body {
-    width: 100%; height: 100%;
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Rajdhani', sans-serif;
-    overflow: hidden;
-    user-select: none;
+    width:100%; height:100%;
+    background:var(--bg); color:var(--text);
+    font-family:'Rajdhani',sans-serif;
+    overflow:hidden; user-select:none;
   }
 
   /* ── TOP BAR ── */
   #topbar {
-    position: fixed; top: 0; left: 0; right: 0;
-    height: 52px;
-    background: linear-gradient(90deg, #070c18 0%, #0d1b2e 50%, #070c18 100%);
-    border-bottom: 1px solid var(--border);
-    display: flex; align-items: center; gap: 16px;
-    padding: 0 18px;
-    z-index: 100;
+    position:fixed; top:0; left:0; right:0; height:52px;
+    background:linear-gradient(90deg,#070c18 0%,#0d1b2e 50%,#070c18 100%);
+    border-bottom:1px solid var(--border);
+    display:flex; align-items:center; gap:16px; padding:0 18px; z-index:100;
   }
   #topbar h1 {
-    font-size: 19px; font-weight: 700; letter-spacing: 2px;
-    color: var(--accent);
-    text-shadow: var(--glow);
-    white-space: nowrap;
+    font-size:19px; font-weight:700; letter-spacing:2px;
+    color:var(--accent); text-shadow:var(--glow); white-space:nowrap;
   }
-  #topbar h1 span { color: var(--accent2); }
-
-  .tb-sep { width: 1px; height: 30px; background: var(--border); }
-
+  #topbar h1 span { color:var(--accent2); }
+  .tb-sep { width:1px; height:30px; background:var(--border); }
   .tb-btn {
-    background: rgba(0,212,255,0.07);
-    border: 1px solid rgba(0,212,255,0.25);
-    color: var(--accent);
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 13px; font-weight: 600; letter-spacing: 1px;
-    padding: 5px 14px; border-radius: 4px;
-    cursor: pointer; transition: all .15s;
+    background:rgba(0,212,255,0.07); border:1px solid rgba(0,212,255,0.25);
+    color:var(--accent); font-family:'Rajdhani',sans-serif;
+    font-size:13px; font-weight:600; letter-spacing:1px;
+    padding:5px 14px; border-radius:4px; cursor:pointer; transition:all .15s;
   }
-  .tb-btn:hover { background: rgba(0,212,255,0.18); box-shadow: var(--glow); }
-  .tb-btn.danger { color: var(--accent2); border-color: rgba(255,107,53,0.3); background: rgba(255,107,53,0.07); }
-  .tb-btn.danger:hover { background: rgba(255,107,53,0.2); box-shadow: 0 0 12px rgba(255,107,53,0.5); }
-
+  .tb-btn:hover { background:rgba(0,212,255,0.18); box-shadow:var(--glow); }
+  .tb-btn.danger { color:var(--accent2); border-color:rgba(255,107,53,0.3); background:rgba(255,107,53,0.07); }
+  .tb-btn.danger:hover { background:rgba(255,107,53,0.2); box-shadow:0 0 12px rgba(255,107,53,0.5); }
   #mode-indicator {
-    margin-left: auto;
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 12px; color: var(--dim);
-    letter-spacing: 1px;
+    margin-left:auto; font-family:'Share Tech Mono',monospace;
+    font-size:12px; color:var(--dim); letter-spacing:1px;
   }
-  #mode-indicator span { color: var(--green); }
+  #mode-indicator span { color:var(--green); }
 
   /* ── LEFT PALETTE ── */
   #palette {
-    position: fixed; top: 52px; left: 0; bottom: 0;
-    width: 130px;
-    background: var(--panel);
-    border-right: 1px solid var(--border);
-    overflow-y: auto; padding: 10px 8px;
-    z-index: 90;
-    display: flex; flex-direction: column; gap: 4px;
+    position:fixed; top:52px; left:0; bottom:0; width:130px;
+    background:var(--panel); border-right:1px solid var(--border);
+    overflow-y:auto; padding:10px 8px; z-index:90;
+    display:flex; flex-direction:column; gap:4px;
   }
   .pal-section {
-    font-size: 10px; letter-spacing: 2px; color: var(--dim);
-    padding: 8px 4px 4px; text-transform: uppercase;
+    font-size:10px; letter-spacing:2px; color:var(--dim);
+    padding:8px 4px 4px; text-transform:uppercase;
   }
+  /* Colour-code palette sections by person */
+  .pal-section.p1 { color:#00d4ff; }
+  .pal-section.p2 { color:#ff6b35; }
+  .pal-section.p3 { color:#00ff88; }
+
   .pal-item {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid var(--border);
-    border-radius: 5px;
-    padding: 8px 6px;
-    cursor: grab; text-align: center;
-    transition: all .15s;
-    font-size: 13px; font-weight: 600;
-    color: var(--text);
-    position: relative;
+    background:rgba(255,255,255,0.03); border:1px solid var(--border);
+    border-radius:5px; padding:8px 6px; cursor:grab; text-align:center;
+    transition:all .15s; font-size:13px; font-weight:600; color:var(--text);
+    position:relative;
   }
   .pal-item:hover {
-    background: rgba(0,212,255,0.1);
-    border-color: var(--accent);
-    color: var(--accent);
-    box-shadow: inset 0 0 8px rgba(0,212,255,0.1);
-    transform: translateX(2px);
+    background:rgba(0,212,255,0.1); border-color:var(--accent);
+    color:var(--accent); transform:translateX(2px);
   }
-  .pal-item canvas { display: block; margin: 0 auto 4px; pointer-events: none; }
+  .pal-item[data-person="1"]:hover { border-color:#00d4ff; color:#00d4ff; }
+  .pal-item[data-person="2"]:hover { border-color:#ff6b35; color:#ff6b35; }
+  .pal-item[data-person="3"]:hover { border-color:#00ff88; color:#00ff88; }
 
   /* ── CANVAS ── */
-  #sim-canvas {
-    position: fixed;
-    top: 52px; left: 130px; right: 0; bottom: 0;
-  }
-  #sim-canvas canvas { display: block; }
+  #sim-canvas { position:fixed; top:52px; left:130px; right:0; bottom:0; }
+  #sim-canvas canvas { display:block; }
 
-  /* ── HELP OVERLAY ── */
+  /* ── HELP PANEL ── */
   #help-panel {
-    position: fixed; top: 52px; right: 0; bottom: 0;
-    width: 200px;
-    background: var(--panel);
-    border-left: 1px solid var(--border);
-    padding: 12px 10px;
-    font-size: 12px; line-height: 1.8;
-    z-index: 90;
-    display: none;
+    position:fixed; top:52px; right:0; bottom:0; width:200px;
+    background:var(--panel); border-left:1px solid var(--border);
+    padding:12px 10px; font-size:12px; line-height:1.8; z-index:90; display:none;
   }
-  #help-panel.open { display: block; }
-  #help-panel h3 { color: var(--accent); margin-bottom: 8px; font-size: 13px; letter-spacing: 1px; }
-  #help-panel .hk { color: var(--accent2); font-family: 'Share Tech Mono', monospace; }
+  #help-panel.open { display:block; }
+  #help-panel h3 { color:var(--accent); margin-bottom:8px; font-size:13px; letter-spacing:1px; }
+  #help-panel .hk { color:var(--accent2); font-family:'Share Tech Mono',monospace; }
 
-  /* ── TOOLTIP ── */
-  #tooltip {
-    position: fixed; pointer-events: none;
-    background: #0d1b2e; border: 1px solid var(--accent);
-    color: var(--accent); font-size: 11px; font-family: 'Share Tech Mono', monospace;
-    padding: 4px 8px; border-radius: 3px;
-    display: none; z-index: 200;
+  /* ── CREDIT LEGEND ── */
+  #credits {
+    position:fixed; bottom:10px; right:10px;
+    background:rgba(11,18,35,0.9); border:1px solid var(--border);
+    border-radius:6px; padding:8px 12px; font-size:11px;
+    font-family:'Share Tech Mono',monospace; z-index:100; line-height:2;
   }
+  #credits .c1 { color:#00d4ff; }
+  #credits .c2 { color:#ff6b35; }
+  #credits .c3 { color:#00ff88; }
 
-  /* scrollbar */
-  #palette::-webkit-scrollbar { width: 4px; }
-  #palette::-webkit-scrollbar-track { background: transparent; }
-  #palette::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+  #palette::-webkit-scrollbar { width:4px; }
+  #palette::-webkit-scrollbar-thumb { background:var(--border); border-radius:2px; }
 </style>
 </head>
 <body>
@@ -156,44 +129,44 @@
   <div id="mode-indicator">MODE: <span id="cur-mode">DRAG</span></div>
 </div>
 
-<!-- PALETTE -->
+<!-- PALETTE — sections colour-coded by person -->
 <div id="palette">
-  <div class="pal-section">Inputs</div>
-  <div class="pal-item" data-type="INPUT">⬛ INPUT</div>
+  <div class="pal-section p3">Inputs</div>
+  <div class="pal-item" data-type="INPUT" data-person="3">⬛ INPUT</div>
 
-  <div class="pal-section">Gates</div>
-  <div class="pal-item" data-type="NOT">NOT</div>
-  <div class="pal-item" data-type="AND">AND</div>
-  <div class="pal-item" data-type="OR">OR</div>
-  <div class="pal-item" data-type="NAND">NAND</div>
-  <div class="pal-item" data-type="NOR">NOR</div>
-  <div class="pal-item" data-type="XOR">XOR</div>
-  <div class="pal-item" data-type="XNOR">XNOR</div>
-  <div class="pal-item" data-type="BUFFER">BUF</div>
+  <div class="pal-section p1">Basic Gates</div>
+  <div class="pal-item" data-type="NOT"    data-person="1">NOT</div>
+  <div class="pal-item" data-type="AND"    data-person="1">AND</div>
+  <div class="pal-item" data-type="OR"     data-person="1">OR</div>
+  <div class="pal-item" data-type="NAND"   data-person="1">NAND</div>
+  <div class="pal-item" data-type="NOR"    data-person="1">NOR</div>
+  <div class="pal-item" data-type="XOR"    data-person="1">XOR</div>
+  <div class="pal-item" data-type="XNOR"   data-person="1">XNOR</div>
+  <div class="pal-item" data-type="BUFFER" data-person="1">BUF</div>
 
-  <div class="pal-section">Adders</div>
-  <div class="pal-item" data-type="HALF_ADDER">1/2 ADD</div>
-  <div class="pal-item" data-type="FULL_ADDER">FULL ADD</div>
-  <div class="pal-item" data-type="HALF_SUB">1/2 SUB</div>
-  <div class="pal-item" data-type="FULL_SUB">FULL SUB</div>
+  <div class="pal-section p2">Adders / Subs</div>
+  <div class="pal-item" data-type="HALF_ADDER" data-person="2">½ ADD</div>
+  <div class="pal-item" data-type="FULL_ADDER" data-person="2">FULL ADD</div>
+  <div class="pal-item" data-type="HALF_SUB"   data-person="2">½ SUB</div>
+  <div class="pal-item" data-type="FULL_SUB"   data-person="2">FULL SUB</div>
 
-  <div class="pal-section">Output</div>
-  <div class="pal-item" data-type="LED">LED</div>
+  <div class="pal-section p3">Output</div>
+  <div class="pal-item" data-type="LED" data-person="3">💡 LED</div>
 </div>
 
 <!-- HELP PANEL -->
-<div id="help-panel" class="open">
+<div id="help-panel">
   <h3>HOW TO USE</h3>
   <div><span class="hk">Drag</span> items from left panel onto canvas</div>
   <div><span class="hk">Click</span> INPUT to toggle 0/1</div>
-  <div><span class="hk">Wire Mode</span> — click an output port then an input port to connect</div>
+  <div><span class="hk">Wire Mode</span> — click an output port then an input port</div>
   <div><span class="hk">Del Wire</span> — click a wire to delete it</div>
   <div><span class="hk">Right-click</span> a node to delete it</div>
   <div><span class="hk">Drag</span> nodes to reposition</div>
   <br>
   <h3>PORTS</h3>
-  <div>🔵 = Input port</div>
-  <div>🟠 = Output port</div>
+  <div>🔵 Input port</div>
+  <div>🟠 Output port</div>
   <div>Green wire = signal 1</div>
   <div>Gray wire = signal 0</div>
 </div>
@@ -201,676 +174,26 @@
 <!-- SIMULATOR CANVAS -->
 <div id="sim-canvas"></div>
 
-<div id="tooltip"></div>
+<!-- CONTRIBUTION LEGEND -->
+<div id="credits">
+  <div class="c1">■ Basic Gates</div>
+  <div class="c2">■  Adders/Subs + Input</div>
+  <div class="c3">■ Engine, LED, Wires</div>
+</div>
+
+<!--
+  LOAD
+-->
+<script src="gates.js"></script>
+<script src="adders.js"></script>
+<script src="main.js"></script>
 
 <script>
-// ══════════════════════════════════════════════
-//  LOGIC GATE SIMULATOR — p5.js
-// ══════════════════════════════════════════════
-
-const COLORS = {
-  bg:       [10, 14, 26],
-  grid:     [20, 35, 60],
-  nodeBody: [17, 28, 50],
-  nodeBorder:[30, 90, 160],
-  accent:   [0, 212, 255],
-  accent2:  [255, 107, 53],
-  green:    [0, 255, 136],
-  wire0:    [60, 80, 100],
-  wire1:    [0, 220, 100],
-  portIn:   [0, 160, 255],
-  portOut:  [255, 140, 0],
-  text:     [200, 220, 240],
-  inputOff: [180, 40, 40],
-  inputOn:  [40, 180, 80],
-  ledOff:   [80, 80, 80],
-  ledOn:    [255, 220, 0],
-};
-
-let nodes = [];      // all placed components
-let wires = [];      // {from: node, fromPort: idx, to: node, toPort: idx}
-let mode = 'drag';   // 'drag' | 'wire' | 'delwire'
-let wireStart = null; // {node, portIdx, portType} during wiring
-let dragging = null;  // {node, ox, oy}
-let nextId = 1;
-
-// Port radius for hit detection
-const PR = 8;
-
-// ── Gate logic evaluators (returns array of output values) ──
-function evalGate(type, v) {
-  var a=v[0], b=v[1], c=v[2];
-  if (type==='NOT')        return [a?0:1];
-  if (type==='BUFFER')     return [a];
-  if (type==='AND')        return [a&b];
-  if (type==='OR')         return [a|b];
-  if (type==='NAND')       return [(a&b)?0:1];
-  if (type==='NOR')        return [(a|b)?0:1];
-  if (type==='XOR')        return [a^b];
-  if (type==='XNOR')       return [(a^b)?0:1];
-  if (type==='LED')        return [];
-  if (type==='HALF_ADDER') return [a^b, a&b];
-  if (type==='FULL_ADDER') { var s1=a^b; return [s1^c, (a&b)|(s1&c)]; }
-  if (type==='HALF_SUB')   return [a^b, (a?0:1)&b];
-  if (type==='FULL_SUB')   { var x1=a^b; return [x1^c, ((a?0:1)&b)|((x1?0:1)&c)]; }
-  return [0];
-}
-
-// Number of input pins per type
-const IN_COUNT = {
-  NOT:1, BUFFER:1, AND:2, OR:2, NAND:2, NOR:2, XOR:2, XNOR:2, INPUT:0, LED:1,
-  HALF_ADDER:2, FULL_ADDER:3, HALF_SUB:2, FULL_SUB:3
-};
-
-// Number of output pins per type
-const OUT_COUNT = {
-  NOT:1, BUFFER:1, AND:1, OR:1, NAND:1, NOR:1, XOR:1, XNOR:1, INPUT:1, LED:0,
-  HALF_ADDER:2, FULL_ADDER:2, HALF_SUB:2, FULL_SUB:2
-};
-
-// Labels for output ports of compound nodes
-const OUT_LABELS = {
-  HALF_ADDER:['SUM','CRY'], FULL_ADDER:['SUM','CRY'],
-  HALF_SUB:['DIF','BRW'],   FULL_SUB:['DIF','BRW']
-};
-
-// Labels for input ports of compound nodes
-const IN_LABELS = {
-  HALF_ADDER:['A','B'], FULL_ADDER:['A','B','Cin'],
-  HALF_SUB:['A','B'],   FULL_SUB:['A','B','Bin']
-};
-
-// ── Node factory ──
-function makeNode(type, x, y) {
-  var nInputs  = IN_COUNT[type] || 0;
-  var nOutputs = OUT_COUNT[type] != null ? OUT_COUNT[type] : 1;
-  var isCompound = (type==='HALF_ADDER'||type==='FULL_ADDER'||type==='HALF_SUB'||type==='FULL_SUB');
-  var isInput = (type==='INPUT');
-  var isLED   = (type==='LED');
-  return {
-    id: nextId++,
-    type: type,
-    x: x, y: y,
-    w: isInput ? 60 : isLED ? 50 : isCompound ? 110 : 90,
-    h: Math.max(60, Math.max(nInputs, nOutputs) * 30 + 20),
-    inputVals:  (new Array(nInputs)).fill(0),
-    outputVals: (new Array(nOutputs)).fill(0),
-    state: 0,
-  };
-}
-
-// Evaluate a node's outputs from its inputVals
-function evalNode(node) {
-  if (node.type === 'INPUT') {
-    node.outputVals[0] = node.state;
-  } else if (node.type === 'LED') {
-    // no outputs
-  } else {
-    var result = evalGate(node.type, node.inputVals);
-    for (var i = 0; i < result.length; i++) node.outputVals[i] = result[i];
-  }
-}
-
-// Propagate all signals through the graph (topological-ish, just do 5 passes)
-function propagate() {
-  for (let pass = 0; pass < 6; pass++) {
-    for (const w of wires) {
-      const val = w.from.outputVals[w.fromPort] != null ? w.from.outputVals[w.fromPort] : 0;
-      w.to.inputVals[w.toPort] = val;
-    }
-    for (const n of nodes) evalNode(n);
-  }
-}
-
-// ── Port positions ──
-function inputPortPos(node, i) {
-  var n = IN_COUNT[node.type] || 1;
-  var spacing = node.h / (n + 1);
-  return { x: node.x, y: node.y + spacing * (i + 1) };
-}
-function outputPortPos(node, i) {
-  var n = OUT_COUNT[node.type] != null ? OUT_COUNT[node.type] : 1;
-  if (n <= 1) return { x: node.x + node.w, y: node.y + node.h / 2 };
-  var spacing = node.h / (n + 1);
-  return { x: node.x + node.w, y: node.y + spacing * (i + 1) };
-}
-
-// ── Hit detection ──
-function hitNode(x, y) {
-  // reverse so top-painted node is hit first
-  for (let i = nodes.length - 1; i >= 0; i--) {
-    const n = nodes[i];
-    if (x >= n.x && x <= n.x + n.w && y >= n.y && y <= n.y + n.h) return n;
-  }
-  return null;
-}
-function hitInputPort(x, y) {
-  for (var ni = 0; ni < nodes.length; ni++) {
-    var n = nodes[ni];
-    var cnt = IN_COUNT[n.type] || 0;
-    for (var i = 0; i < cnt; i++) {
-      var pp = inputPortPos(n, i);
-      if (dist(x, y, pp.x, pp.y) < PR + 2) return { node: n, portIdx: i, portType: 'in' };
-    }
-  }
-  return null;
-}
-function hitOutputPort(x, y) {
-  for (var ni = 0; ni < nodes.length; ni++) {
-    var n = nodes[ni];
-    if (n.type === 'LED') continue;
-    var nOut = OUT_COUNT[n.type] != null ? OUT_COUNT[n.type] : 1;
-    for (var oi = 0; oi < nOut; oi++) {
-      var pp = outputPortPos(n, oi);
-      if (dist(x, y, pp.x, pp.y) < PR + 2) return { node: n, portIdx: oi, portType: 'out' };
-    }
-  }
-  return null;
-}
-function hitWire(x, y) {
-  for (const w of wires) {
-    const pts = wirePoints(w);
-    for (let i = 0; i < pts.length - 1; i++) {
-      if (distToSegment(x, y, pts[i].x, pts[i].y, pts[i+1].x, pts[i+1].y) < 6) return w;
-    }
-  }
-  return null;
-}
-
-function dist(ax, ay, bx, by) {
-  return Math.hypot(ax - bx, ay - by);
-}
-function distToSegment(px, py, ax, ay, bx, by) {
-  const dx = bx - ax, dy = by - ay;
-  const lenSq = dx*dx + dy*dy;
-  if (lenSq === 0) return dist(px, py, ax, ay);
-  let t = ((px-ax)*dx + (py-ay)*dy) / lenSq;
-  t = Math.max(0, Math.min(1, t));
-  return dist(px, py, ax + t*dx, ay + t*dy);
-}
-
-// Generate wire path points (orthogonal routing)
-function wirePoints(w) {
-  var from = outputPortPos(w.from, w.fromPort);
-  var to   = inputPortPos(w.to,   w.toPort);
-  var mx = (from.x + to.x) / 2;
-  return [
-    { x: from.x, y: from.y },
-    { x: mx,     y: from.y },
-    { x: mx,     y: to.y   },
-    { x: to.x,   y: to.y   },
-  ];
-}
-
-// ════════════════════════════════════════════
-//  p5 SKETCH
-// ════════════════════════════════════════════
-const sketch = (p) => {
-  let canvasW, canvasH;
-  let mouseWireEnd = { x: 0, y: 0 };
-
-  p.setup = function () {
-    const cont = document.getElementById('sim-canvas');
-    canvasW = cont.offsetWidth;
-    canvasH = cont.offsetHeight;
-    const cv = p.createCanvas(canvasW, canvasH);
-    cv.parent('sim-canvas');
-    p.textFont('Rajdhani');
-  };
-
-  p.windowResized = function () {
-    const cont = document.getElementById('sim-canvas');
-    canvasW = cont.offsetWidth;
-    canvasH = cont.offsetHeight;
-    p.resizeCanvas(canvasW, canvasH);
-  };
-
-  // Helper: apply a COLORS array as fill/stroke, with optional alpha
-  function cf(col, a) {
-    if (a === undefined) p.fill(col[0], col[1], col[2]);
-    else                 p.fill(col[0], col[1], col[2], a);
-  }
-  function cs(col, a) {
-    if (a === undefined) p.stroke(col[0], col[1], col[2]);
-    else                 p.stroke(col[0], col[1], col[2], a);
-  }
-
-  p.draw = function () {
-    propagate();
-    p.background(COLORS.bg[0], COLORS.bg[1], COLORS.bg[2]);
-    drawGrid();
-    for (var wi=0; wi<wires.length; wi++)  drawWire(wires[wi]);
-    if (wireStart) drawTempWire();
-    for (var ni=0; ni<nodes.length; ni++)  drawNode(nodes[ni]);
-  };
-
-  // ── Grid ──
-  function drawGrid() {
-    cs(COLORS.grid);
-    p.strokeWeight(0.5);
-    const gs = 28;
-    for (let x = 0; x < canvasW; x += gs) p.line(x, 0, x, canvasH);
-    for (let y = 0; y < canvasH; y += gs) p.line(0, y, canvasW, y);
-  }
-
-  // ── Wire drawing ──
-  function drawWire(w) {
-    var pts = wirePoints(w);
-    var rawVal = w.from.outputVals[w.fromPort];
-    var val = (rawVal != null) ? rawVal : 0;
-    var col = val ? COLORS.wire1 : COLORS.wire0;
-    cs(col);
-    p.strokeWeight(val ? 2.5 : 1.8);
-    p.noFill();
-    for (var i = 0; i < pts.length - 1; i++) {
-      p.line(pts[i].x, pts[i].y, pts[i+1].x, pts[i+1].y);
-    }
-    // dot at joints
-    p.noStroke();
-    cf(col);
-    for (var j = 1; j < pts.length - 1; j++) {
-      p.circle(pts[j].x, pts[j].y, 5);
-    }
-  }
-
-  function drawTempWire() {
-    const from = outputPortPos(wireStart.node, wireStart.portIdx);
-    cs(COLORS.accent);
-    p.strokeWeight(1.5);
-    p.drawingContext.setLineDash([6, 4]);
-    p.line(from.x, from.y, mouseWireEnd.x, mouseWireEnd.y);
-    p.drawingContext.setLineDash([]);
-  }
-
-  // ── Node drawing ──
-  function drawNode(node) {
-    var x=node.x, y=node.y, w=node.w, h=node.h, type=node.type;
-
-    if (type === 'INPUT') { drawInputSwitch(node); return; }
-    if (type === 'LED')   { drawLED(node);          return; }
-
-    var isCompound = (type==='HALF_ADDER'||type==='FULL_ADDER'||type==='HALF_SUB'||type==='FULL_SUB');
-    if (isCompound) { drawCompoundNode(node); return; }
-
-    // Shadow
-    p.drawingContext.shadowColor = 'rgba(0,180,255,0.15)';
-    p.drawingContext.shadowBlur = 14;
-
-    // Body
-    cf(COLORS.nodeBody);
-    cs(COLORS.nodeBorder);
-    p.strokeWeight(1.5);
-    p.rect(x, y, w, h, 6);
-
-    p.drawingContext.shadowBlur = 0;
-
-    drawGateSymbol(node);
-
-    // Label
-    p.noStroke();
-    cf(COLORS.accent);
-    p.textAlign(p.CENTER, p.CENTER);
-    p.textSize(13);
-    p.textStyle(p.BOLD);
-    p.text(type, x + w / 2, y + h + 12);
-    p.textStyle(p.NORMAL);
-
-    // Input ports
-    var cnt = IN_COUNT[type] || 0;
-    for (var i = 0; i < cnt; i++) {
-      var pp = inputPortPos(node, i);
-      drawPort(pp.x, pp.y, 'in', node.inputVals[i]);
-    }
-
-    // Output port
-    var op = outputPortPos(node, 0);
-    drawPort(op.x, op.y, 'out', node.outputVals[0]);
-  }
-
-  // ── Compound node (adder/subtractor) ──
-  function drawCompoundNode(node) {
-    var x=node.x, y=node.y, w=node.w, h=node.h, type=node.type;
-
-    // Glow border when any output is 1
-    var anyOn = node.outputVals[0] || node.outputVals[1];
-    p.drawingContext.shadowColor = anyOn ? 'rgba(255,160,0,0.25)' : 'rgba(0,180,255,0.12)';
-    p.drawingContext.shadowBlur = anyOn ? 18 : 10;
-
-    // Body — slightly warmer tint for adders
-    p.fill(22, 32, 58);
-    p.stroke(80, 140, 255);
-    p.strokeWeight(2);
-    p.rect(x, y, w, h, 8);
-
-    p.drawingContext.shadowBlur = 0;
-
-    // Header bar
-    p.noStroke();
-    p.fill(30, 80, 180, 180);
-    p.rect(x+1, y+1, w-2, 22, 7, 7, 0, 0);
-
-    // Title
-    cf(COLORS.accent);
-    p.textAlign(p.CENTER, p.CENTER);
-    p.textSize(11);
-    p.textStyle(p.BOLD);
-    var title = type==='HALF_ADDER'?'HALF ADDER':type==='FULL_ADDER'?'FULL ADDER':type==='HALF_SUB'?'HALF SUB':'FULL SUB';
-    p.text(title, x + w/2, y + 12);
-    p.textStyle(p.NORMAL);
-
-    // Internal schematic label
-    p.textSize(9);
-    cf(COLORS.text, 120);
-    var formula = (type==='HALF_ADDER'||type==='FULL_ADDER') ? 'XOR+AND' : 'XOR+NOT+AND';
-    p.text(formula, x + w/2, y + h/2);
-
-    // Input ports with labels
-    var inCnt = IN_COUNT[type];
-    var inLbls = IN_LABELS[type] || [];
-    for (var i = 0; i < inCnt; i++) {
-      var pp = inputPortPos(node, i);
-      drawPort(pp.x, pp.y, 'in', node.inputVals[i]);
-      p.noStroke();
-      cf(COLORS.text, 180);
-      p.textAlign(p.LEFT, p.CENTER);
-      p.textSize(10);
-      p.text(inLbls[i] || ('in'+i), pp.x + 8, pp.y);
-    }
-
-    // Output ports with labels
-    var outCnt = OUT_COUNT[type];
-    var outLbls = OUT_LABELS[type] || [];
-    for (var oi = 0; oi < outCnt; oi++) {
-      var op = outputPortPos(node, oi);
-      drawPort(op.x, op.y, 'out', node.outputVals[oi]);
-      p.noStroke();
-      cf(COLORS.text, 180);
-      p.textAlign(p.RIGHT, p.CENTER);
-      p.textSize(10);
-      p.text(outLbls[oi] || ('out'+oi), op.x - 8, op.y);
-    }
-
-    // Truth table current values
-    p.noStroke();
-    cf(COLORS.accent, 200);
-    p.textAlign(p.CENTER, p.BOTTOM);
-    p.textSize(10);
-    var inStr = '';
-    for (var ii=0; ii<inCnt; ii++) inStr += (inLbls[ii]||('in'+ii))+'='+node.inputVals[ii]+'  ';
-    p.text(inStr.trim(), x+w/2, y+h-4);
-  }
-
-  function drawInputSwitch(node) {
-    const { x, y, w, h } = node;
-    const on = node.state;
-    const col = on ? COLORS.inputOn : COLORS.inputOff;
-
-    p.drawingContext.shadowColor = on ? 'rgba(0,255,100,0.3)' : 'rgba(200,40,40,0.2)';
-    p.drawingContext.shadowBlur = on ? 18 : 8;
-
-    cf(col, 200);
-    cs(col);
-    p.strokeWeight(2);
-    p.rect(x, y, w, h, 8);
-
-    p.drawingContext.shadowBlur = 0;
-
-    p.noStroke();
-    p.fill(255);
-    p.textAlign(p.CENTER, p.CENTER);
-    p.textSize(20);
-    p.textStyle(p.BOLD);
-    p.text(on ? '1' : '0', x + w / 2, y + h / 2);
-    p.textStyle(p.NORMAL);
-    p.textSize(10);
-    cf(COLORS.text, 180);
-    p.text('INPUT', x + w / 2, y + h + 10);
-
-    const op = outputPortPos(node, 0);
-    drawPort(op.x, op.y, 'out', on);
-  }
-
-  function drawLED(node) {
-    const { x, y, w, h } = node;
-    const on = node.inputVals[0];
-    const cx = x + w / 2, cy = y + h / 2;
-
-    if (on) {
-      p.drawingContext.shadowColor = 'rgba(255,220,0,0.8)';
-      p.drawingContext.shadowBlur = 30;
-    }
-
-    const ledCol = on ? COLORS.ledOn : COLORS.ledOff;
-    cf(ledCol);
-    p.stroke(on ? 200 : 60, on ? 160 : 60, on ? 0 : 60);
-    p.strokeWeight(2);
-    p.circle(cx, cy, 36);
-
-    p.drawingContext.shadowBlur = 0;
-
-    if (on) {
-      p.noStroke();
-      p.fill(255, 255, 200, 120);
-      p.circle(cx - 5, cy - 5, 12);
-    }
-
-    p.noStroke();
-    cf(COLORS.text, 180);
-    p.textAlign(p.CENTER, p.CENTER);
-    p.textSize(10);
-    p.text('LED', cx, cy + 26);
-    p.textSize(12);
-    p.textStyle(p.BOLD);
-    p.fill(on ? 0 : 200);
-    p.text(on ? '1' : '0', cx, cy);
-    p.textStyle(p.NORMAL);
-
-    const pp = inputPortPos(node, 0);
-    drawPort(pp.x, pp.y, 'in', on);
-  }
-
-  function drawGateSymbol(node) {
-    const { x, y, w, h, type, outputVals } = node;
-    const on = outputVals[0];
-    const gx = x + 14, gy = y + h / 2 - 16, gw = 36, gh = 32;
-
-    cf(COLORS.accent, 40);
-    cs(COLORS.accent, on ? 180 : 80);
-    p.strokeWeight(1.8);
-
-    if (type === 'AND' || type === 'NAND') {
-      p.rect(gx, gy, gw * 0.6, gh);
-      p.arc(gx + gw * 0.6, gy + gh / 2, gh, gh, -p.HALF_PI, p.HALF_PI);
-      if (type === 'NAND') {
-        cf(COLORS.nodeBody);
-        cs(COLORS.accent, on ? 180 : 80);
-        p.circle(gx + gw + 7, gy + gh / 2, 8);
-      }
-    } else if (type === 'OR' || type === 'NOR' || type === 'XOR' || type === 'XNOR') {
-      p.beginShape();
-      p.vertex(gx, gy);
-      p.bezierVertex(gx + gw * 0.7, gy - 8, gx + gw, gy + 8, gx + gw, gy + gh / 2);
-      p.bezierVertex(gx + gw, gy + gh - 8, gx + gw * 0.7, gy + gh + 8, gx, gy + gh);
-      p.bezierVertex(gx + gw * 0.35, gy + gh / 2, gx + gw * 0.35, gy + gh / 2, gx, gy);
-      p.endShape();
-      if (type === 'XOR' || type === 'XNOR') {
-        p.noFill();
-        p.arc(gx - 10, gy + gh / 2, 20, gh, -p.HALF_PI, p.HALF_PI);
-      }
-      if (type === 'NOR' || type === 'XNOR') {
-        cf(COLORS.nodeBody);
-        cs(COLORS.accent, on ? 180 : 80);
-        p.circle(gx + gw + 7, gy + gh / 2, 8);
-      }
-    } else if (type === 'NOT') {
-      p.triangle(gx, gy, gx, gy + gh, gx + gw, gy + gh / 2);
-      cf(COLORS.nodeBody);
-      p.circle(gx + gw + 7, gy + gh / 2, 8);
-    } else if (type === 'BUFFER') {
-      p.triangle(gx, gy, gx, gy + gh, gx + gw, gy + gh / 2);
-    }
-  }
-
-  function drawPort(x, y, ptype, val) {
-    var col = (ptype === 'in') ? COLORS.portIn : COLORS.portOut;
-    p.noStroke();
-    if (val) {
-      cf(col, 60);
-      p.circle(x, y, PR * 3);
-    }
-    cs(col);
-    p.strokeWeight(1.5);
-    cf(COLORS.bg);
-    p.circle(x, y, PR * 2);
-    p.noStroke();
-    cf(col);
-    p.circle(x, y, PR);
-  }
-
-  // ══════════════════════════════
-  //  MOUSE INTERACTION
-  // ══════════════════════════════
-  p.mouseMoved = function () {
-    mouseWireEnd = { x: p.mouseX, y: p.mouseY };
-  };
-
-  p.mouseDragged = function () {
-    mouseWireEnd = { x: p.mouseX, y: p.mouseY };
-    if (dragging && mode === 'drag') {
-      dragging.node.x = p.mouseX - dragging.ox;
-      dragging.node.y = p.mouseY - dragging.oy;
-    }
-  };
-
-  p.mousePressed = function () {
-    if (p.mouseButton !== p.LEFT) return;
-    const mx = p.mouseX, my = p.mouseY;
-
-    if (mode === 'wire') {
-      const op = hitOutputPort(mx, my);
-      const ip = hitInputPort(mx, my);
-
-      if (!wireStart && op) {
-        wireStart = { node: op.node, portIdx: op.portIdx };
-        return;
-      }
-      if (wireStart && ip) {
-        // avoid duplicate wires on same port
-        const exists = wires.find(w => w.to === ip.node && w.toPort === ip.portIdx);
-        if (!exists && ip.node !== wireStart.node) {
-          wires.push({
-            from: wireStart.node, fromPort: wireStart.portIdx,
-            to:   ip.node,        toPort:   ip.portIdx,
-          });
-        }
-        wireStart = null;
-        return;
-      }
-      if (!op && !ip) wireStart = null;
-      return;
-    }
-
-    if (mode === 'delwire') {
-      const w = hitWire(mx, my);
-      if (w) wires = wires.filter(x => x !== w);
-      return;
-    }
-
-    // DRAG mode
-    var n = hitNode(mx, my);
-    if (n && n.type === 'INPUT') {
-      n.state = 1 - n.state;
-    }
-    if (n) {
-      dragging = { node: n, ox: mx - n.x, oy: my - n.y };
-    }
-  };
-
-  p.mouseReleased = function () {
-    dragging = null;
-  };
-
-  p.mouseClicked = function () {
-    // right-click = context menu is handled by contextmenu event
-  };
-};
-
-// ── Context menu → delete node ──
-document.getElementById('sim-canvas').addEventListener('contextmenu', e => {
-  e.preventDefault();
-  const rect = e.currentTarget.getBoundingClientRect();
-  const mx = e.clientX - rect.left;
-  const my = e.clientY - rect.top;
-  const n = hitNode(mx, my);
-  if (n) {
-    wires = wires.filter(w => w.from !== n && w.to !== n);
-    nodes = nodes.filter(x => x !== n);
-  }
-});
-
-// ── Mode buttons ──
-document.getElementById('btn-wire').addEventListener('click', () => {
-  mode = mode === 'wire' ? 'drag' : 'wire';
-  wireStart = null;
-  updateModeUI();
-});
-document.getElementById('btn-del-wire').addEventListener('click', () => {
-  mode = mode === 'delwire' ? 'drag' : 'delwire';
-  wireStart = null;
-  updateModeUI();
-});
-document.getElementById('btn-clear').addEventListener('click', () => {
-  nodes = []; wires = []; wireStart = null;
-});
-document.getElementById('btn-help').addEventListener('click', () => {
-  document.getElementById('help-panel').classList.toggle('open');
-});
-
-function updateModeUI() {
-  const el = document.getElementById('cur-mode');
-  el.textContent = mode.toUpperCase();
-  el.style.color = mode === 'wire' ? '#ff6b35' : mode === 'delwire' ? '#ff4444' : '#00ff88';
-  document.getElementById('btn-wire').style.background =
-    mode === 'wire' ? 'rgba(255,107,53,0.25)' : '';
-  document.getElementById('btn-del-wire').style.background =
-    mode === 'delwire' ? 'rgba(255,50,50,0.25)' : '';
-}
-
-// ── Drag from palette ──
-document.querySelectorAll('.pal-item').forEach(item => {
-  item.addEventListener('mousedown', e => {
-    e.preventDefault();
-    const type = item.dataset.type;
-    const rect = document.getElementById('sim-canvas').getBoundingClientRect();
-
-    // place slightly offset so it appears under cursor
-    const sx = e.clientX - rect.left - 45;
-    const sy = e.clientY - rect.top  - 25;
-    const node = makeNode(type, Math.max(0, sx), Math.max(0, sy));
-    nodes.push(node);
-
-    // immediately start dragging it
-    // We set dragging state; p5 will pick it up on mousedragged
-    // Inject synthetic drag context
-    window._pendingDrag = { node, ox: 45, oy: 25 };
+  // Help toggle (small UI bit — lives in HTML since it touches the DOM directly)
+  document.getElementById('btn-help').addEventListener('click', () => {
+    document.getElementById('help-panel').classList.toggle('open');
   });
-});
-
-// Bridge palette drag to p5 dragging var
-// We need to hook into p5 internals; easiest: override on the canvas
-document.getElementById('sim-canvas').addEventListener('mousemove', e => {
-  if (window._pendingDrag) {
-    dragging = window._pendingDrag;
-    window._pendingDrag = null;
-  }
-});
-document.addEventListener('mouseup', () => {
-  dragging = null;
-  window._pendingDrag = null;
-});
-
-// ── Launch p5 ──
-new p5(sketch);
 </script>
+
 </body>
 </html>
