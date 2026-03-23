@@ -1,16 +1,7 @@
-// ══════════════════════════════════════════════
-//  BASIC GATES
-// gate evaluation + drawing for
-//  NOT, AND, OR, NAND, NOR, XOR, XNOR, BUFFER
-// drawPort() — used by ALL node types
-// ══════════════════════════════════════════════
-
 const BASIC_GATE_TYPES = ['NOT', 'AND', 'OR', 'NAND', 'NOR', 'XOR', 'XNOR', 'BUFFER'];
-
 const BASIC_IN_COUNT  = { NOT:1, BUFFER:1, AND:2, OR:2, NAND:2, NOR:2, XOR:2, XNOR:2 };
 const BASIC_OUT_COUNT = { NOT:1, BUFFER:1, AND:1, OR:1, NAND:1, NOR:1, XOR:1, XNOR:1 };
 
-// ── Evaluate a basic gate → returns output array ──
 function evalBasicGate(type, v) {
   const a = v[0], b = v[1];
   if (type === 'NOT')    return [a ? 0 : 1];
@@ -24,8 +15,6 @@ function evalBasicGate(type, v) {
   return [0];
 }
 
-// ── Draw a port circle ──
-// Shared utility — called by ALL node draw functions across all persons
 function drawPort(p, x, y, ptype, val, COLORS) {
   const PR = 8;
   const col = (ptype === 'in') ? COLORS.portIn : COLORS.portOut;
@@ -43,7 +32,6 @@ function drawPort(p, x, y, ptype, val, COLORS) {
   p.circle(x, y, PR);
 }
 
-// ── Draw the schematic symbol inside a gate body ──
 function drawGateSymbol(p, node, COLORS) {
   const { x, y, w, h, type, outputVals } = node;
   const on = outputVals[0];
@@ -86,7 +74,6 @@ function drawGateSymbol(p, node, COLORS) {
   }
 }
 
-// ── Draw a full basic gate node ──
 function drawBasicGate(p, node, COLORS, inputPortPos, outputPortPos) {
   const { x, y, w, h, type } = node;
 
@@ -101,7 +88,6 @@ function drawBasicGate(p, node, COLORS, inputPortPos, outputPortPos) {
 
   drawGateSymbol(p, node, COLORS);
 
-  // Label below
   p.noStroke();
   p.fill(COLORS.accent[0], COLORS.accent[1], COLORS.accent[2]);
   p.textAlign(p.CENTER, p.CENTER);
@@ -110,14 +96,12 @@ function drawBasicGate(p, node, COLORS, inputPortPos, outputPortPos) {
   p.text(type, x + w / 2, y + h + 12);
   p.textStyle(p.NORMAL);
 
-  // Input ports
   const cnt = BASIC_IN_COUNT[type] || 0;
   for (let i = 0; i < cnt; i++) {
     const pp = inputPortPos(node, i);
     drawPort(p, pp.x, pp.y, 'in', node.inputVals[i], COLORS);
   }
 
-  // Output port
   const op = outputPortPos(node, 0);
   drawPort(p, op.x, op.y, 'out', node.outputVals[0], COLORS);
 }
