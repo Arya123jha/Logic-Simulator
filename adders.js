@@ -1,9 +1,6 @@
-// ══════════════════════════════════════════════
-//  ADDERS, SUBTRACTORS & INPUT SWITCH
-// logic + drawing for
-//  HALF_ADDER, FULL_ADDER, HALF_SUB, FULL_SUB
-//  Also owns: drawInputSwitch() visual component
-// ══════════════════════════════════════════════
+// Adders, Subtractors and Input Switch
+// Half Adder, Full Adder, Half Subtractor, Full Subtractor
+// input toggle switch drawing
 
 const COMPOUND_GATE_TYPES = ['HALF_ADDER', 'FULL_ADDER', 'HALF_SUB', 'FULL_SUB'];
 
@@ -25,7 +22,7 @@ const COMPOUND_OUT_LABELS = {
   HALF_SUB:  ['DIF','BRW'],  FULL_SUB:  ['DIF','BRW'],
 };
 
-// ── Evaluate adder / subtractor → returns [out0, out1] ──
+// calculate output of adders/subtractors
 function evalCompoundGate(type, v) {
   const a = v[0], b = v[1], c = v[2] || 0;
   if (type === 'HALF_ADDER') {
@@ -45,7 +42,7 @@ function evalCompoundGate(type, v) {
   return [0, 0];
 }
 
-// ── Draw a compound (adder/subtractor) node ──
+// draw adder/subtractor block
 function drawCompoundGate(p, node, COLORS, inputPortPos, outputPortPos) {
   const { x, y, w, h, type } = node;
 
@@ -53,7 +50,7 @@ function drawCompoundGate(p, node, COLORS, inputPortPos, outputPortPos) {
   p.drawingContext.shadowColor = anyOn ? 'rgba(255,160,0,0.25)' : 'rgba(0,180,255,0.12)';
   p.drawingContext.shadowBlur  = anyOn ? 18 : 10;
 
-  // Body — warmer blue tint to distinguish from basic gates
+  // Body
   p.fill(22, 32, 58);
   p.stroke(80, 140, 255);
   p.strokeWeight(2);
@@ -75,7 +72,7 @@ function drawCompoundGate(p, node, COLORS, inputPortPos, outputPortPos) {
   p.text(titles[type], x + w / 2, y + 12);
   p.textStyle(p.NORMAL);
 
-  // Internal formula label (centre)
+  //text in centre
   p.textSize(9);
   p.fill(COLORS.text[0], COLORS.text[1], COLORS.text[2], 120);
   const formula = (type === 'HALF_ADDER' || type === 'FULL_ADDER') ? 'XOR + AND' : 'XOR + NOT + AND';
@@ -116,8 +113,7 @@ function drawCompoundGate(p, node, COLORS, inputPortPos, outputPortPos) {
   }
 }
 
-// ── Draw the INPUT toggle switch ──
-// Person 2 owns this visual — it's the most interactive graphic element
+// draw input toggle switch
 function drawInputSwitch(p, node, COLORS, outputPortPos) {
   const { x, y, w, h } = node;
   const on  = node.state;
@@ -132,7 +128,7 @@ function drawInputSwitch(p, node, COLORS, outputPortPos) {
   p.rect(x, y, w, h, 8);
   p.drawingContext.shadowBlur = 0;
 
-  // Big 0 / 1 digit
+  //show 0 or 1
   p.noStroke();
   p.fill(255);
   p.textAlign(p.CENTER, p.CENTER);
@@ -141,12 +137,12 @@ function drawInputSwitch(p, node, COLORS, outputPortPos) {
   p.text(on ? '1' : '0', x + w / 2, y + h / 2);
   p.textStyle(p.NORMAL);
 
-  // "INPUT" label below
+  //label below
   p.textSize(10);
   p.fill(COLORS.text[0], COLORS.text[1], COLORS.text[2], 180);
   p.text('INPUT', x + w / 2, y + h + 10);
 
-  // Subtle toggle-track indicator inside body
+  //small toggle bar design
   const trackY = y + h - 12;
   const trackW = w * 0.6;
   const trackX = x + (w - trackW) / 2;
